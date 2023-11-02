@@ -1,27 +1,15 @@
 from datetime import datetime
 
-from dotenv import load_dotenv
-from database.client import database, DB_COLLECTION
-
-from enums import GroupType
-
-from utils.time import add_delta
-
-load_dotenv()
-
-date_format = dict(hour="%Y-%m-%dT%H:00:00", day="%Y-%m-%dT00:00:00", month="%Y-%m-01T00:00:00")
+from src.database.client import database, DB_COLLECTION
+from src.constants import GroupType, date_format
+from src.utils.time import add_delta
 
 async def aggregate_payouts(
     start_date: datetime,
     end_date: datetime,
-    group_type: str = "month"
+    group_type: GroupType = GroupType.MONTH
 ):
-    print("group_type->", group_type)
-
-    # upper_bound = add_delta(end_date, group_type)
-    upper_bound = end_date
-
-    print(upper_bound)
+    upper_bound = add_delta(end_date, group_type)
 
     pipeline = [
         {
