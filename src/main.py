@@ -1,7 +1,6 @@
 import asyncio
 import logging
 import sys
-import os
 import json
 
 from datetime import datetime
@@ -17,8 +16,6 @@ dispatcher = Dispatcher()
 
 @dispatcher.message()
 async def process_message(context: Message):
-    print('message ->', context.chat.id, context.chat.username, '/', context.text)
-
     try:
         query = json.loads(context.text)
 
@@ -47,8 +44,6 @@ async def main():
     await dispatcher.start_polling(bot)
 
 if __name__ == "__main__":
-    print(config.DB_COLLECTION)
-
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
 
