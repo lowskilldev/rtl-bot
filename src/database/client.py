@@ -1,9 +1,9 @@
-import os
-
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.server_api import ServerApi
 
-client = AsyncIOMotorClient(os.getenv("DB_URL"), server_api=ServerApi("1"))
-database = client[os.getenv("DB_NAME")]
+from src.config import config
 
-DB_COLLECTION = os.getenv("DB_COLLECTION")
+client = AsyncIOMotorClient(config.DB_URL, server_api=ServerApi("1"))
+database = client[config.DB_NAME]
+
+DB_COLLECTION = config.DB_COLLECTION

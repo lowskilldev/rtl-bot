@@ -10,9 +10,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from aiogram.enums import ParseMode
 
-from dotenv import load_dotenv
-load_dotenv()
-
+from src.config import config
 from src.database.funcs import aggregate_payouts
 
 dispatcher = Dispatcher()
@@ -44,12 +42,13 @@ async def process_message(context: Message):
         await context.answer(str(e))
 
 async def main():
-    bot = Bot(os.getenv("BOT_TOKEN"), parse_mode=ParseMode.HTML)
+    bot = Bot(config.BOT_TOKEN, parse_mode=ParseMode.HTML)
 
     await dispatcher.start_polling(bot)
 
 if __name__ == "__main__":
+    print(config.DB_COLLECTION)
+
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
     asyncio.run(main())
 
-    print(os.getenv("DB_COLLECTION"))
