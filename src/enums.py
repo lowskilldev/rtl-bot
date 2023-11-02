@@ -6,10 +6,3 @@ class AutoName(str, Enum):
     
     def __repr__(self):
         return f"enums.{self}"
-    
-class GroupType(AutoName):
-    HOUR = auto()
-    DAY = auto()
-    MONTH = auto()
-
-__all__ = ["GroupType"]
