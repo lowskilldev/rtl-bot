@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "rtl-bot"
+version = "1.0"
+description = "RTL bot with MongoDB"
+authors = ["linius <146680754+lowskilldev@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiogram = "^3.1.1"
+motor = "^3.3.1"
+dotenv = "^0.0.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
